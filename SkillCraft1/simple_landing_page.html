@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Landing Page — Task 01</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    line-height: 1.6;
+  }
+
+  /* ---- Fixed nav ---- */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: transparent;
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    z-index: 1000;
+  }
+
+  nav.scrolled {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 12px 40px;
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+
+  nav.scrolled .logo { color: #222; }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    transition: color 0.3s ease;
+  }
+
+  nav.scrolled .nav-links a { color: #222; }
+
+  .nav-links a:hover {
+    color: #3b82f6;
+  }
+
+  /* ---- Hero ---- */
+  header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: #fff;
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 42px;
+    margin-bottom: 16px;
+  }
+
+  header p {
+    font-size: 18px;
+    max-width: 500px;
+    color: #cbd5e1;
+  }
+
+  /* ---- Content sections (to give the page scroll length) ---- */
+  section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  section h2 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  section p {
+    color: #555;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    background: #f1f5f9;
+    color: #555;
+    font-size: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    header h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="logo">Brand</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>A Simple Responsive Landing Page</h1>
+    <p>Scroll down to see the nav bar switch to a solid background, and hover a link to see it change color.</p>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>This is a minimal landing page built to demonstrate a fixed navigation
+    bar that reacts to scrolling and hovering. It stays visible at the top
+    of the page at all times.</p>
+  </section>
+
+  <section id="features">
+    <h2>Features</h2>
+    <p>The nav starts transparent over the hero section, then becomes solid
+    white with a shadow once you scroll past it. Hovering any link changes
+    its color.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Add your contact form or details here. This section exists mainly to
+    give the page enough height to demonstrate the scroll behavior.</p>
+  </section>
+
+  <footer>
+    &copy; 2026 Brand. Built for Task 01.
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>
